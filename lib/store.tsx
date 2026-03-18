@@ -1,0 +1,210 @@
+"use client"
+
+import { createContext, useContext, useState, useCallback, type ReactNode, useEffect } from 'react'
+import { supabase } from "@/lib/supabase"
+
+export interface MenuItem {
+  id: string
+  name: string
+  price: number
+  largePrice?: number
+  category: 'pasta' | 'pizza' | 'drinks' | 'desserts' | 'setmenu'
+  image: string
+}
+
+export interface SetMenuDetails {
+  setName: string
+  pizzaFlavor: string
+  dessert: string
+}
+
+export interface OrderItem {
+  id: string
+  menuItemId: string
+  name: string
+  category: MenuItem['category']
+  quantity: number
+  price: number
+  size?: 'medium' | 'large' | null
+  isSet: boolean
+  setDetails?: SetMenuDetails
+}
+
+export interface Order {
+  id: string
+  items: OrderItem[]
+  tableNumber: string
+  customerName: string
+  total: number
+  status: 'pending' | 'cooking' | 'ready' | 'completed'
+  chefName?: string
+  createdAt: Date
+}
+
+export interface StockItem {
+  id: string
+  name: string
+  currentStock: number
+  minStock: number
+  unit: string
+}
+
+export interface Notification {
+  id: string
+  message: string
+  type: 'order' | 'ready' | 'stock'
+  timestamp: Date
+}
+
+interface StoreContextType {
+  orders: Order[]
+  menuItems: MenuItem[]
+  stockItems: StockItem[]
+  notifications: Notification[]
+  addOrder: (order: Omit<Order, 'id' | 'createdAt' | 'status'>) => void
+  updateOrderStatus: (orderId: string, status: Order['status'], chefName?: string) => void
+  addNotification: (notification: Omit<Notification, 'id' | 'timestamp'>) => void
+  clearNotification: (id: string) => void
+}
+
+const menuItemsData: MenuItem[] = [
+  { id: 'p1', name: 'Spaghetti Carbonara', price: 18.99, category: 'pasta', image: '/menu/carbonara.jpg' },
+  { id: 'p2', name: 'Fettuccine Alfredo', price: 16.99, category: 'pasta', image: '/menu/alfredo.jpg' },
+  { id: 'p3', name: 'Penne Arrabbiata', price: 14.99, category: 'pasta', image: '/menu/arrabbiata.jpg' },
+  { id: 'p4', name: 'Lasagna Bolognese', price: 19.99, category: 'pasta', image: '/menu/lasagna.jpg' },
+  { id: 'p5', name: 'Ravioli Ricotta', price: 17.99, category: 'pasta', image: '/menu/ravioli.jpg' },
+  { id: 'p6', name: 'Linguine Pesto', price: 15.99, category: 'pasta', image: '/menu/pesto.jpg' },
+
+  { id: 'z1', name: 'Margherita', price: 14.99, largePrice: 19.99, category: 'pizza', image: '/menu/margherita.jpg' },
+  { id: 'z2', name: 'Pepperoni', price: 16.99, largePrice: 22.99, category: 'pizza', image: '/menu/pepperoni.jpg' },
+  { id: 'z3', name: 'Quattro Formaggi', price: 18.99, largePrice: 24.99, category: 'pizza', image: '/menu/quattro.jpg' },
+  { id: 'z4', name: 'Hawaiian', price: 16.99, largePrice: 22.99, category: 'pizza', image: '/menu/hawaiian.jpg' },
+
+  { id: 'd1', name: 'Sparkling Water', price: 3.99, category: 'drinks', image: '/menu/water.jpg' },
+  { id: 'd2', name: 'Italian Soda', price: 4.99, category: 'drinks', image: '/menu/soda.jpg' },
+
+  { id: 's1', name: 'Tiramisu', price: 8.99, category: 'desserts', image: '/menu/tiramisu.jpg' },
+  { id: 's2', name: 'Panna Cotta', price: 7.99, category: 'desserts', image: '/menu/pannacotta.jpg' },
+
+  { id: 'm1', name: 'Pizza Combo', price: 24.99, category: 'setmenu', image: '/menu/combo1.jpg' },
+  { id: 'm2', name: 'Grand Mix Box', price: 34.99, category: 'setmenu', image: '/menu/combo2.jpg' },
+]
+const stockItemsData: StockItem[] = [/* ❌ ไม่ต้องแก้ */]
+
+const StoreContext = createContext<StoreContextType | null>(null)
+
+export function StoreProvider({ children }: { children: ReactNode }) {
+  const [orders, setOrders] = useState<Order[]>([])
+  const [notifications, setNotifications] = useState<Notification[]>([])
+
+  // 🔥 โหลดจาก Supabase
+  useEffect(() => {
+    fetchOrders()
+  }, [])
+
+  async function fetchOrders() {
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .order('created_at', { ascending: false })
+
+    if (error) {
+      console.error(error)
+      return
+    }
+
+    const mapped: Order[] = (data || []).map((o: any) => ({
+      id: o.id,
+      items: o.items || [],
+      tableNumber: o.table_name || "-",
+      customerName: o.customer_name || "-",
+      total: (o.items || []).reduce((sum: number, item: any) => {
+        return sum + (item.price || 0) * (item.quantity || 1)
+      }, 0),
+      status: o.status,
+      chefName: o.chef || "",
+      createdAt: new Date(o.created_at)
+    }))
+
+    setOrders(mapped)
+  }
+
+  // 🔥 เพิ่ม order → ลง DB
+  const addOrder = useCallback(async (orderData: Omit<Order, 'id' | 'createdAt' | 'status'>) => {
+    const { error } = await supabase
+      .from('orders')
+      .insert({
+        table_name: orderData.tableNumber,
+        customer_name: orderData.customerName,
+        items: orderData.items,
+        status: 'pending',
+        chef: null
+      })
+
+    if (error) {
+      console.error(error)
+      return
+    }
+
+    fetchOrders()
+  }, [])
+
+  // 🔥 update status → DB
+  const updateOrderStatus = useCallback(async (orderId: string, status: Order['status'], chefName?: string) => {
+    console.log("UPDATE:", orderId, status, chefName)
+
+    const { data, error } = await supabase
+      .from('orders')
+      .update({
+        status,
+        chef: chefName || null
+      })
+      .eq('id', orderId)
+      .select()
+
+    console.log("UPDATE RESULT:", data)
+    console.log("UPDATE ERROR:", error)
+
+    if (error) {
+      console.error(error)
+      return
+    }
+
+    fetchOrders()
+  }, [])
+
+  const addNotification = useCallback((notification: Omit<Notification, 'id' | 'timestamp'>) => {
+    setNotifications(prev => [...prev, {
+      ...notification,
+      id: `notif-${Date.now()}`,
+      timestamp: new Date(),
+    }])
+  }, [])
+
+  const clearNotification = useCallback((id: string) => {
+    setNotifications(prev => prev.filter(n => n.id !== id))
+  }, [])
+
+  return (
+    <StoreContext.Provider value={{
+      orders,
+      menuItems: menuItemsData,
+      stockItems: stockItemsData,
+      notifications,
+      addOrder,
+      updateOrderStatus,
+      addNotification,
+      clearNotification,
+    }}>
+      {children}
+    </StoreContext.Provider>
+  )
+}
+
+export function useStore() {
+  const context = useContext(StoreContext)
+  if (!context) {
+    throw new Error('useStore must be used within a StoreProvider')
+  }
+  return context
+}
