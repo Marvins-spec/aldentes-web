@@ -6,21 +6,21 @@
 :root {
   /* Al Dente's Dark Italian Theme - Black, Cream, Dark Red */
   --background: oklch(0.12 0.005 30);
-  --foreground: oklch(0.92 0.02 85);
+  --foreground: oklch(100% 0.00011 271.152);
   --card: oklch(0.16 0.005 30);
-  --card-foreground: oklch(0.92 0.02 85);
+  --card-foreground: oklch(100% 0.00011 271.152);
   --popover: oklch(0.14 0.005 30);
-  --popover-foreground: oklch(0.92 0.02 85);
+  --popover-foreground: oklch(100% 0.00011 271.152);
   --primary: oklch(0.45 0.18 25);
-  --primary-foreground: oklch(0.95 0.02 85);
+  --primary-foreground: oklch(100% 0.00011 271.152);
   --secondary: oklch(0.22 0.005 30);
-  --secondary-foreground: oklch(0.92 0.02 85);
+  --secondary-foreground: oklch(100% 0.00011 271.152);
   --muted: oklch(0.2 0.005 30);
   --muted-foreground: oklch(0.65 0.02 85);
   --accent: oklch(0.45 0.18 25);
-  --accent-foreground: oklch(0.95 0.02 85);
+  --accent-foreground: oklch(100% 0.00011 271.152);
   --destructive: oklch(0.5 0.2 25);
-  --destructive-foreground: oklch(0.95 0.02 85);
+  --destructive-foreground: oklch(100% 0.00011 271.152);
   --border: oklch(0.28 0.01 30);
   --input: oklch(0.2 0.005 30);
   --ring: oklch(0.45 0.18 25);
@@ -31,11 +31,11 @@
   --chart-5: oklch(0.6 0.08 200);
   --radius: 0.75rem;
   --sidebar: oklch(0.1 0.005 30);
-  --sidebar-foreground: oklch(0.92 0.02 85);
+  --sidebar-foreground: oklch(100% 0.00011 271.152);
   --sidebar-primary: oklch(0.45 0.18 25);
-  --sidebar-primary-foreground: oklch(0.95 0.02 85);
+  --sidebar-primary-foreground: oklch(100% 0.00011 271.152);
   --sidebar-accent: oklch(0.18 0.005 30);
-  --sidebar-accent-foreground: oklch(0.92 0.02 85);
+  --sidebar-accent-foreground: oklch(100% 0.00011 271.152);
   --sidebar-border: oklch(0.25 0.01 30);
   --sidebar-ring: oklch(0.45 0.18 25);
   
