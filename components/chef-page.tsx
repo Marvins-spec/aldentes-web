@@ -85,7 +85,7 @@ function OrderCard({ order, onAction, actionLabel, actionDisabled, showChef }: O
                     <span>{item.setDetails.dessert}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <Cake className="w-3 h-3" />
+                    <Coffee className="w-3 h-3" />
                     <span>{item.setDetails.drink}</span>
                   </div>
                 </div>
