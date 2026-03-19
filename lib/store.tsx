@@ -81,7 +81,7 @@ const menuItemsData: MenuItem[] = [
   { id: 'z4', name: 'Pizza Veggie Delight', price: 390, largePrice: 440, category: 'pizza', image: '/menu/veggie.png' },
 
   { id: 'd1', name: 'Cola', price: 260, category: 'drinks', image: '/menu/cola.png' },
-  { id: 'd2', name: 'Italian Soda', price: 260, category: 'drinks', image: '/menu/soda.png' },
+  { id: 'd2', name: 'Italian Soda', price: 260, category: 'drinks', image: '/menu/italian-soda.png' },
   { id: 'd3', name: 'Sparkling Water', price: 150, category: 'drinks', image: '/menu/water.png' },
 
   { id: 's1', name: 'Tiramisu', price: 350, category: 'desserts', image: '/menu/tiramisu.png' },
