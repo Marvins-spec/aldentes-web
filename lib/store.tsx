@@ -80,15 +80,15 @@ const menuItemsData: MenuItem[] = [
   { id: 'z3', name: 'Pizza Cheese', price: 390, largePrice: 440, category: 'pizza', image: '/menu/cheese.png' },
   { id: 'z4', name: 'Pizza Veggie Delight', price: 390, largePrice: 440, category: 'pizza', image: '/menu/veggie.png' },
 
-  { id: 'd1', name: 'Cola', price: 260, category: 'drinks', image: '/menu/cola.jpg' },
-  { id: 'd2', name: 'Italian Soda', price: 260, category: 'drinks', image: '/menu/soda.jpg' },
-  { id: 'd3', name: 'Sparkling Water', price: 150, category: 'drinks', image: '/menu/water.jpg' },
+  { id: 'd1', name: 'Cola', price: 260, category: 'drinks', image: '/menu/cola.png' },
+  { id: 'd2', name: 'Italian Soda', price: 260, category: 'drinks', image: '/menu/soda.png' },
+  { id: 'd3', name: 'Sparkling Water', price: 150, category: 'drinks', image: '/menu/water.png' },
 
-  { id: 's1', name: 'Tiramisu', price: 350, category: 'desserts', image: '/menu/tiramisu.jpg' },
-  { id: 's2', name: 'Panna Cotta', price: 350, category: 'desserts', image: '/menu/panna-cotta.jpg' },
+  { id: 's1', name: 'Tiramisu', price: 350, category: 'desserts', image: '/menu/tiramisu.png' },
+  { id: 's2', name: 'Panna Cotta', price: 350, category: 'desserts', image: '/menu/panna-cotta.png' },
 
-  { id: 'm1', name: 'Pizza Combo', price: 890, category: 'setmenu', image: '/menu/combo1.jpg' },
-  { id: 'm2', name: 'Grand Mix Box', price: 1190, category: 'setmenu', image: '/menu/combo2.jpg' },
+  { id: 'm1', name: 'Pizza Combo', price: 890, category: 'setmenu', image: '/menu/combo1.png' },
+  { id: 'm2', name: 'Grand Mix Box', price: 1190, category: 'setmenu', image: '/menu/combo2.png' },
 ]
 const stockItemsData: StockItem[] = [/* ❌ ไม่ต้องแก้ */]
 
