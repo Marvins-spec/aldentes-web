@@ -68,24 +68,24 @@ interface StoreContextType {
 }
 
 const menuItemsData: MenuItem[] = [
-  { id: 'p1', name: 'Grilled Salmon Lemon Butter', price: 390, category: 'pasta', image: '/menu/carbonara.jpg' },
-  { id: 'p2', name: 'Rosemary Lamb Chops', price: 390, category: 'pasta', image: '/menu/alfredo.jpg' },
-  { id: 'p3', name: 'Seafood Black Ink Pasta', price: 390, category: 'pasta', image: '/menu/arrabbiata.jpg' },
+  { id: 'p1', name: 'Grilled Salmon Lemon Butter', price: 390, category: 'pasta', image: '/menu/salmon.png' },
+  { id: 'p2', name: 'Rosemary Lamb Chops', price: 390, category: 'pasta', image: '/menu/lamb.png' },
+  { id: 'p3', name: 'Seafood Black Ink Pasta', price: 390, category: 'pasta', image: '/menu/pasta-black.png' },
   //{ id: 'p4', name: 'Lasagna Bolognese', price: 19.99, category: 'pasta', image: '/menu/lasagna.jpg' }, //
   //{ id: 'p5', name: 'Ravioli Ricotta', price: 17.99, category: 'pasta', image: '/menu/ravioli.jpg' },//
  // { id: 'p6', name: 'Linguine Pesto', price: 15.99, category: 'pasta', image: '/menu/pesto.jpg' },//
 
   { id: 'z1', name: 'Pizza Margherita', price: 390, largePrice: 440, category: 'pizza', image: '/menu/margherita.png' },
-  { id: 'z2', name: 'Pizza Prosciutto', price: 390, largePrice: 440, category: 'pizza', image: '/menu/pepperoni.jpg' },
-  { id: 'z3', name: 'Pizza Cheese', price: 390, largePrice: 440, category: 'pizza', image: '/menu/quattro.jpg' },
-  { id: 'z4', name: 'Pizza Veggie Delight', price: 390, largePrice: 440, category: 'pizza', image: '/menu/hawaiian.jpg' },
+  { id: 'z2', name: 'Pizza Prosciutto', price: 390, largePrice: 440, category: 'pizza', image: '/menu/prosciutto.png' },
+  { id: 'z3', name: 'Pizza Cheese', price: 390, largePrice: 440, category: 'pizza', image: '/menu/cheese.png' },
+  { id: 'z4', name: 'Pizza Veggie Delight', price: 390, largePrice: 440, category: 'pizza', image: '/menu/veggie.png' },
 
-  { id: 'd1', name: 'Cola', price: 260, category: 'drinks', image: '/menu/water.jpg' },
+  { id: 'd1', name: 'Cola', price: 260, category: 'drinks', image: '/menu/cola.jpg' },
   { id: 'd2', name: 'Italian Soda', price: 260, category: 'drinks', image: '/menu/soda.jpg' },
-  { id: 'd3', name: 'Sparkling Water', price: 150, category: 'drinks', image: '/menu/soda.jpg' },
+  { id: 'd3', name: 'Sparkling Water', price: 150, category: 'drinks', image: '/menu/water.jpg' },
 
   { id: 's1', name: 'Tiramisu', price: 350, category: 'desserts', image: '/menu/tiramisu.jpg' },
-  { id: 's2', name: 'Panna Cotta', price: 350, category: 'desserts', image: '/menu/pannacotta.jpg' },
+  { id: 's2', name: 'Panna Cotta', price: 350, category: 'desserts', image: '/menu/panna-cotta.jpg' },
 
   { id: 'm1', name: 'Pizza Combo', price: 890, category: 'setmenu', image: '/menu/combo1.jpg' },
   { id: 'm2', name: 'Grand Mix Box', price: 1190, category: 'setmenu', image: '/menu/combo2.jpg' },
