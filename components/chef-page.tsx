@@ -196,11 +196,14 @@ export function ChefPage() {
             Welcome, Chef <span className="text-primary font-medium">{chefName}</span>
           </p>
         </div>
-        <Button variant="outline" onClick={() => {
+        <Button
+          variant="outline"
+          onClick={() => {
             localStorage.removeItem("chefName")
             setIsNameSet(false)
             setChefName("")
           }}
+        >
           Change Chef
         </Button>
       </div>
