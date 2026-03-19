@@ -19,14 +19,6 @@ import {
   Cake
 } from "lucide-react"
 
-useEffect(() => {
-  const savedName = localStorage.getItem("chefName")
-  if (savedName) {
-    setChefName(savedName)
-    setIsNameSet(true)
-  }
-}, [])
-
 interface OrderCardProps {
   order: Order
   onAction?: () => void
@@ -132,6 +124,15 @@ export function ChefPage() {
   const { orders, updateOrderStatus } = useStore()
   const [chefName, setChefName] = useState('')
   const [isNameSet, setIsNameSet] = useState(false)
+
+  // ✅ ต้องอยู่ตรงนี้
+  useEffect(() => {
+    const savedName = localStorage.getItem("chefName")
+    if (savedName) {
+      setChefName(savedName)
+      setIsNameSet(true)
+    }
+  }, [])
 
   const pendingOrders = orders.filter(o => o.status === 'pending')
   const cookingOrders = orders.filter(o => o.status === 'cooking')
