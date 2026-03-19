@@ -289,14 +289,17 @@ export function OrderTaker() {
                   onClick={() => handleItemClick(item)}
                 >
                   <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.currentTarget.src = "/menu/placeholder.jpg"
+                      }}
+                    />
+                  
                     <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent z-10" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {activeCategory === 'pasta' && <Utensils className="w-12 h-12 text-muted-foreground/30" />}
-                      {activeCategory === 'pizza' && <Pizza className="w-12 h-12 text-muted-foreground/30" />}
-                      {activeCategory === 'drinks' && <Coffee className="w-12 h-12 text-muted-foreground/30" />}
-                      {activeCategory === 'desserts' && <Cake className="w-12 h-12 text-muted-foreground/30" />}
-                      {activeCategory === 'setmenu' && <Package className="w-12 h-12 text-muted-foreground/30" />}
-                    </div>
+                  
                     {cartCount > 0 && (
                       <Badge className="absolute top-2 right-2 z-20 bg-primary text-primary-foreground">
                         {cartCount}x
