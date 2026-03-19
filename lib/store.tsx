@@ -16,6 +16,7 @@ export interface SetMenuDetails {
   setName: string
   pizzaFlavor: string
   dessert: string
+  drink: string
 }
 
 export interface OrderItem {
