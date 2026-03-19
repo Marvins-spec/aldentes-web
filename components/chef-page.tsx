@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import { useState } from "react"
 import { useStore, type Order } from "@/lib/store"
 import { cn } from "@/lib/utils"
@@ -17,6 +18,14 @@ import {
   Pizza,
   Cake
 } from "lucide-react"
+
+useEffect(() => {
+  const savedName = localStorage.getItem("chefName")
+  if (savedName) {
+    setChefName(savedName)
+    setIsNameSet(true)
+  }
+}, [])
 
 interface OrderCardProps {
   order: Order
@@ -164,7 +173,10 @@ export function ChefPage() {
               className="w-full" 
               size="lg"
               disabled={!chefName.trim()}
-              onClick={() => setIsNameSet(true)}
+              onClick={() => {
+              localStorage.setItem("chefName", chefName)
+              setIsNameSet(true)
+            }}
             >
               Start Cooking
             </Button>
