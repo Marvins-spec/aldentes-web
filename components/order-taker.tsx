@@ -474,7 +474,7 @@ export function OrderTaker() {
         open={setMenuModal.open} 
         onOpenChange={(open) => {
           if (!open) {
-            setSetMenuModal({ open: false, item: null, step: 1, selectedPizza: null, selectedDessert: null, setMenuModal.selectedDrink })
+            setSetMenuModal({ open: false, item: null, step: 1, selectedPizza: null, selectedDessert: null, selectedDrink: null })
           }
         }}
       >
