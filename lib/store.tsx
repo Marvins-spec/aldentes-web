@@ -101,6 +101,28 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   // 🔥 โหลดจาก Supabase
   useEffect(() => {
     fetchOrders()
+  
+    const channel = supabase
+      .channel('orders-realtime')
+      .on(
+        'postgres_changes',
+        {
+          event: '*', // insert / update / delete
+          schema: 'public',
+          table: 'orders',
+        },
+        (payload) => {
+          console.log('REALTIME:', payload)
+  
+          // รีโหลดใหม่ (ง่ายสุด)
+          fetchOrders()
+        }
+      )
+      .subscribe()
+  
+    return () => {
+      supabase.removeChannel(channel)
+    }
   }, [])
 
   async function fetchOrders() {
