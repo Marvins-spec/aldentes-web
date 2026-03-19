@@ -188,7 +188,7 @@ export function StockPage() {
       {/* Footer Note */}
       <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
         <Package className="w-4 h-4" />
-        <span>Stock data synced with Google Sheets (simulated)</span>
+        <span>Stock เชื่อมกับ Google Sheets</span>
       </div>
     </div>
   )
