@@ -59,11 +59,13 @@ export function OrderTaker() {
     step: 1 | 2 | 3
     selectedPizza: string | null
     selectedDessert: string | null
-  }>({ open: false, item: null, step: 1, selectedPizza: null, selectedDessert: null })
+    selectedDrink: string | null
+  }>({ open: false, item: null, step: 1, selectedPizza: null, selectedDessert: null, selectedDrink: null })
 
   const filteredItems = menuItems.filter(item => item.category === activeCategory)
   const pizzaItems = menuItems.filter(item => item.category === 'pizza')
   const dessertItems = menuItems.filter(item => item.category === 'desserts')
+  const drinkItems = menuItems.filter(item => item.category === 'drinks')
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   const handleItemClick = (item: MenuItem) => {
@@ -77,7 +79,8 @@ export function OrderTaker() {
         item,
         step: 1,
         selectedPizza: null,
-        selectedDessert: null
+        selectedDessert: null,
+        selectedDrink: null
       })
     } else {
       // Add regular item directly
@@ -135,12 +138,13 @@ export function OrderTaker() {
   }
 
   const addSetMenuToCart = () => {
-    if (!setMenuModal.item || !setMenuModal.selectedPizza || !setMenuModal.selectedDessert) return
+    if (!setMenuModal.item || !setMenuModal.selectedPizza || !setMenuModal.selectedDessert || !setMenuModal.selectedDrink) return
     
     const setDetails: SetMenuDetails = {
       setName: setMenuModal.item.name,
       pizzaFlavor: setMenuModal.selectedPizza,
-      dessert: setMenuModal.selectedDessert
+      dessert: setMenuModal.selectedDessert,
+      drink: setMenuModal.selectedDrink
     }
 
     setCart(prev => [...prev, {
@@ -159,7 +163,8 @@ export function OrderTaker() {
       item: null,
       step: 1,
       selectedPizza: null,
-      selectedDessert: null
+      selectedDessert: null,
+      selectedDrink: null
     })
   }
 
@@ -469,7 +474,7 @@ export function OrderTaker() {
         open={setMenuModal.open} 
         onOpenChange={(open) => {
           if (!open) {
-            setSetMenuModal({ open: false, item: null, step: 1, selectedPizza: null, selectedDessert: null })
+            setSetMenuModal({ open: false, item: null, step: 1, selectedPizza: null, selectedDessert: null, setMenuModal.selectedDrink })
           }
         }}
       >
@@ -479,7 +484,8 @@ export function OrderTaker() {
             <DialogDescription>
               {setMenuModal.step === 1 && "Step 1: Choose your pizza"}
               {setMenuModal.step === 2 && "Step 2: Choose your dessert"}
-              {setMenuModal.step === 3 && "Step 3: Confirm your selection"}
+              {setMenuModal.step === 3 && "Step 3: Choose your drink"}
+              {setMenuModal.step === 3 && "Step 4: Confirm your selection"}
             </DialogDescription>
           </DialogHeader>
 
@@ -545,8 +551,34 @@ export function OrderTaker() {
               </div>
             )}
 
-            {/* Step 3: Confirm */}
+            {/* Step 3: Choose Drink */}
             {setMenuModal.step === 3 && (
+              <div className="grid grid-cols-2 gap-3">
+                {drinkItems.map((drink) => (
+                  <button
+                    key={drink.id}
+                    onClick={() =>
+                      setSetMenuModal(prev => ({
+                        ...prev,
+                        selectedDrink: drink.name,
+                        step: 4 // ไป confirm
+                      }))
+                    }
+                    className={cn(
+                      "flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all",
+                      setMenuModal.selectedDrink === drink.name
+                        ? "border-primary bg-primary/10"
+                        : "border-border hover:border-primary/50"
+                    )}
+                  >
+                    <span className="text-sm font-medium">{drink.name}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Step 4: Confirm */}
+            {setMenuModal.step === 4 && (
               <div className="space-y-4">
                 <div className="bg-muted/50 rounded-xl p-4 space-y-3">
                   <h4 className="font-medium text-foreground">{setMenuModal.item?.name}</h4>
@@ -561,6 +593,10 @@ export function OrderTaker() {
                       <span className="text-muted-foreground">Dessert:</span>
                       <span className="font-medium">{setMenuModal.selectedDessert}</span>
                     </div>
+                    <div className="flex items-center gap-2">
+                    <span className="text-muted-foreground">Drink:</span>
+                    <span className="font-medium">{setMenuModal.selectedDrink}</span>
+                  </div>
                   </div>
                   <div className="pt-2 border-t border-border">
                     <p className="text-primary font-semibold text-lg">${setMenuModal.item?.price.toFixed(2)}</p>
