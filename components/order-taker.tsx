@@ -292,7 +292,7 @@ export function OrderTaker() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-contain p-2"
+                      className="w-full h-full object-cover scale-90"
                       onError={(e) => {
                         e.currentTarget.src = "/menu/placeholder.jpg"
                       }}
