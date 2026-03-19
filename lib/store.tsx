@@ -76,7 +76,7 @@ const menuItemsData: MenuItem[] = [
  // { id: 'p6', name: 'Linguine Pesto', price: 15.99, category: 'pasta', image: '/menu/pesto.jpg' },//
 
   { id: 'z1', name: 'Pizza Margherita', price: 390, largePrice: 440, category: 'pizza', image: '/menu/margherita.png' },
-  { id: 'z2', name: 'Pizza Prosciutto', price: 390, largePrice: 440, category: 'pizza', image: '/menu/prosciutto.png' },
+  { id: 'z2', name: 'Pizza Parma Ham', price: 390, largePrice: 440, category: 'pizza', image: '/menu/prosciutto.png' },
   { id: 'z3', name: 'Pizza Cheese', price: 390, largePrice: 440, category: 'pizza', image: '/menu/cheese.png' },
   { id: 'z4', name: 'Pizza Veggie Delight', price: 390, largePrice: 440, category: 'pizza', image: '/menu/veggie.png' },
 
