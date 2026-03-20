@@ -16,7 +16,8 @@ import {
   ArrowRight,
   User,
   Pizza,
-  Cake
+  Cake,
+  Coffee
 } from "lucide-react"
 
 interface OrderCardProps {
