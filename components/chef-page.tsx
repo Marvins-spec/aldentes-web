@@ -148,7 +148,7 @@ export function ChefPage() {
   }
 
   const handleMarkReady = (orderId: string) => {
-    updateOrderStatus(orderId, 'ready')
+    updateOrderStatus(orderId, 'ready', chefName)
   }
 
   if (!isNameSet) {
