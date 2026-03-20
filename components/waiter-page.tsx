@@ -12,7 +12,8 @@ import {
   User,
   CheckCircle2,
   Pizza,
-  Cake
+  Cake,
+  Coffee
 } from "lucide-react"
 
 export function WaiterPage() {
@@ -104,6 +105,9 @@ export function WaiterPage() {
                                 </div>
                                 <div className="flex items-center gap-1">
                                   <Cake className="w-3 h-3" />
+                                  <span>{item.setDetails.dessert}</span>
+                                <div className="flex items-center gap-1">
+                                  <Coffee className="w-3 h-3" />
                                   <span>{item.setDetails.dessert}</span>
                                 </div>
                               </div>
