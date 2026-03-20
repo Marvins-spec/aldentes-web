@@ -90,28 +90,42 @@ export function WaiterPage() {
                       <div className="space-y-2 p-3 bg-muted/30 rounded-lg">
                         {order.items.map((item, idx) => (
                           <div key={idx} className="text-sm">
+                            
                             <div className="flex items-center justify-between">
                               <span className="text-card-foreground">
                                 {item.name}
-                                {item.size && <span className="text-muted-foreground ml-1">({item.size === 'large' ? 'L' : 'M'})</span>}
+                                {item.size && (
+                                  <span className="text-muted-foreground ml-1">
+                                    ({item.size === 'large' ? 'L' : 'M'})
+                                  </span>
+                                )}
                               </span>
-                              <span className="text-muted-foreground font-medium">x{item.quantity}</span>
+                              <span className="text-muted-foreground font-medium">
+                                x{item.quantity}
+                              </span>
                             </div>
+                      
                             {item.isSet && item.setDetails && (
                               <div className="ml-3 mt-1 space-y-0.5 text-xs text-muted-foreground">
+                      
                                 <div className="flex items-center gap-1">
                                   <Pizza className="w-3 h-3" />
                                   <span>{item.setDetails.pizzaFlavor}</span>
                                 </div>
+                      
                                 <div className="flex items-center gap-1">
                                   <Cake className="w-3 h-3" />
                                   <span>{item.setDetails.dessert}</span>
+                                </div>
+                      
                                 <div className="flex items-center gap-1">
                                   <Coffee className="w-3 h-3" />
-                                  <span>{item.setDetails.dessert}</span>
+                                  <span>{item.setDetails.drink}</span>
                                 </div>
+                      
                               </div>
                             )}
+                      
                           </div>
                         ))}
                       </div>
