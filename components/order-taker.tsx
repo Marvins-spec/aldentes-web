@@ -598,7 +598,7 @@ export function OrderTaker() {
                       <span className="font-medium">{setMenuModal.selectedDessert}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                    <Cake className="w-4 h-4 text-primary" />
+                    <Coffee className="w-4 h-4 text-primary" />
                     <span className="text-muted-foreground">Drink:</span>
                     <span className="font-medium">{setMenuModal.selectedDrink}</span>
                   </div>
