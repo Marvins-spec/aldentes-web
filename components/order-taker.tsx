@@ -575,6 +575,7 @@ export function OrderTaker() {
                         : "border-border hover:border-primary/50"
                     )}
                   >
+                    <Coffee className="w-8 h-8 text-primary" />
                     <span className="text-sm font-medium">{drink.name}</span>
                   </button>
                 ))}
