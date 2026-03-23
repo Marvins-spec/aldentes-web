@@ -133,11 +133,15 @@ export function ChefPage() {
   // ✅ ต้องอยู่ตรงนี้
   useEffect(() => {
     const savedName = localStorage.getItem("chefName")
+    console.log("LOAD CHEF:", savedName)
+  
     if (savedName) {
       setChefName(savedName)
       setIsNameSet(true)
+    } else {
+      setIsNameSet(false)
     }
-  }, [])
+  }, [orders]) // 🔥 ใช้ orders เป็น trigger
 
   const pendingOrders = orders.filter(o => o.status === 'pending')
   const cookingOrders = orders.filter(o => o.status === 'cooking')
