@@ -129,7 +129,7 @@ export function ChefPage() {
   const { orders, updateOrderStatus } = useStore()
   const [chefName, setChefName] = useState('')
   const [isNameSet, setIsNameSet] = useState(false)
-
+  
   // ✅ ต้องอยู่ตรงนี้
   useEffect(() => {
     const savedName = localStorage.getItem("chefName")
