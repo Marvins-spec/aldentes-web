@@ -489,7 +489,7 @@ export function OrderTaker() {
               {setMenuModal.step === 1 && "Step 1: Choose your pizza"}
               {setMenuModal.step === 2 && "Step 2: Choose your dessert"}
               {setMenuModal.step === 3 && "Step 3: Choose your drink"}
-              {setMenuModal.step === 3 && "Step 4: Confirm your selection"}
+              {setMenuModal.step === 4 && "Step 4: Confirm your selection"}
             </DialogDescription>
           </DialogHeader>
 
