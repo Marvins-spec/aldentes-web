@@ -17,7 +17,8 @@ import {
   User,
   Pizza,
   Cake,
-  Coffee
+  Coffee,
+  Utensils
 } from "lucide-react"
 
 interface OrderCardProps {
@@ -89,6 +90,12 @@ function OrderCard({ order, onAction, actionLabel, actionDisabled, showChef }: O
                     <Coffee className="w-3 h-3" />
                     <span>{item.setDetails.drink}</span>
                   </div>
+                  {item.setDetails.extra && (
+                    <div className="flex items-center gap-1">
+                      <span>🍗</span>
+                      <span>{item.setDetails.extra}</span>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
