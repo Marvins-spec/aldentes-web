@@ -144,7 +144,8 @@ export function OrderTaker() {
       setName: setMenuModal.item.name,
       pizzaFlavor: setMenuModal.selectedPizza,
       dessert: setMenuModal.selectedDessert,
-      drink: setMenuModal.selectedDrink
+      drink: setMenuModal.selectedDrink,
+      extra: "Wings & Fries"
     }
 
     setCart(prev => [...prev, {
@@ -224,6 +225,12 @@ export function OrderTaker() {
               <Coffee className="w-3 h-3" />
               <span>{item.setDetails.drink}</span>
             </div>
+            {item.setDetails.extra && (
+              <div className="flex items-center gap-1">
+                <span>🍗</span>
+                <span>{item.setDetails.extra}</span>
+              </div>
+            )}
           </div>
         </div>
       )
