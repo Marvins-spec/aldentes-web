@@ -73,7 +73,7 @@ const menuItemsData: MenuItem[] = [
   { id: 'p1', name: 'Grilled Salmon Lemon Butter', price: 390, category: 'pasta', image: '/menu/salmon.png' },
   { id: 'p2', name: 'Rosemary Lamb Chops', price: 390, category: 'pasta', image: '/menu/lamb.png' },
   { id: 'p3', name: 'Seafood Black Ink Pasta', price: 390, category: 'pasta', image: '/menu/pasta-black.png' },
-  { id: 'p4', name: 'Wings & Fries', price: 390, category: 'pasta', image: '/menu/wings-fries.png' },
+  { id: 'p4', name: 'Wings & Fries', price: 390, category: 'pasta', image: '/menu/wing-fries.png' },
   //{ id: 'p5', name: 'Ravioli Ricotta', price: 17.99, category: 'pasta', image: '/menu/ravioli.jpg' },//
  // { id: 'p6', name: 'Linguine Pesto', price: 15.99, category: 'pasta', image: '/menu/pesto.jpg' },//
 
