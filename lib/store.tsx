@@ -17,6 +17,7 @@ export interface SetMenuDetails {
   pizzaFlavor: string
   dessert: string
   drink: string
+  extra?: string
 }
 
 export interface OrderItem {
