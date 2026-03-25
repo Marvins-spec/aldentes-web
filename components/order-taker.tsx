@@ -145,7 +145,9 @@ export function OrderTaker() {
       pizzaFlavor: setMenuModal.selectedPizza,
       dessert: setMenuModal.selectedDessert,
       drink: setMenuModal.selectedDrink,
-      extra: "Wings & Fries"
+      extra: setMenuModal.item.name === "Grand Mix Box"
+        ? "Wings & Fries"
+        : undefined
     }
 
     setCart(prev => [...prev, {
