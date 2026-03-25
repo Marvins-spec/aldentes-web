@@ -89,8 +89,8 @@ const menuItemsData: MenuItem[] = [
   { id: 's1', name: 'Tiramisu', price: 350, category: 'desserts', image: '/menu/tiramisu.png' },
   { id: 's2', name: 'Panna Cotta', price: 350, category: 'desserts', image: '/menu/panna-cotta.png' },
 
-  { id: 'm1', name: 'Pizza Combo', price: 890, category: 'setmenu', image: '/menu/combo1.png' },
-  { id: 'm2', name: 'Grand Mix Box', price: 1190, category: 'setmenu', image: '/menu/combo2.png' },
+  { id: 'm1', name: 'Pizza Combo', price: 890, category: 'setmenu', image: '/menu/pizza-combo.png' },
+  { id: 'm2', name: 'Grand Mix Box', price: 1190, category: 'setmenu', image: '/menu/grand-mix-box.png' },
 ]
 const stockItemsData: StockItem[] = [/* ❌ ไม่ต้องแก้ */]
 
