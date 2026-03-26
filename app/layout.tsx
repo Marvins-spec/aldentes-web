@@ -2,6 +2,19 @@ import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+import { StoreProvider } from "@/lib/store"
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <StoreProvider>
+          {children}
+        </StoreProvider>
+      </body>
+    </html>
+  )
+}
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
