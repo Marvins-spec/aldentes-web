@@ -26,7 +26,7 @@ function getStockStatus(current: number, min: number): StockStatus {
 }
 
 export function StockPage() {
-  const { stockItems } = useStore()
+  const { stockItems, fetchStock } = useStore()
   const [searchQuery, setSearchQuery] = useState('')
   const [showLowStockOnly, setShowLowStockOnly] = useState(false)
 
@@ -109,9 +109,13 @@ export function StockPage() {
             Show low stock only
           </Label>
         </div>
-        <Button variant="outline" className="ml-auto gap-2">
-          <ExternalLink className="w-4 h-4" />
-          Open Google Sheets
+        <Button
+          onClick={async () => {
+            await fetch('/api/sync-stock')
+            fetchStock()
+          }}
+        >
+          Sync Stock
         </Button>
       </div>
 
