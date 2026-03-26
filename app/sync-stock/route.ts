@@ -1,3 +1,5 @@
+export const runtime = 'nodejs'
+
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 import { JWT } from 'google-auth-library'
 import { NextResponse } from 'next/server'
