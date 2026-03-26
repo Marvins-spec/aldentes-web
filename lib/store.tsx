@@ -92,7 +92,7 @@ const menuItemsData: MenuItem[] = [
   { id: 'm1', name: 'Pizza Combo', price: 890, category: 'setmenu', image: '/menu/pizza-combo.png' },
   { id: 'm2', name: 'Grand Mix Box', price: 1190, category: 'setmenu', image: '/menu/grand-mix-box.png' },
 ]
-const stockItemsData: StockItem[] = [/* ❌ ไม่ต้องแก้ */]
+const [stockItems, setStockItems] = useState<StockItem[]>([])
 
 const StoreContext = createContext<StoreContextType | null>(null)
 
@@ -103,6 +103,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   // 🔥 โหลดจาก Supabase
   useEffect(() => {
     fetchOrders()
+    fetchStock()
   
     const channel = supabase
       .channel('orders-realtime')
@@ -153,7 +154,27 @@ export function StoreProvider({ children }: { children: ReactNode }) {
 
     setOrders(mapped)
   }
+// เพิ่มใหม่ //
+  async function fetchStock() {
+  const { data, error } = await supabase
+    .from('stock')
+    .select('*')
 
+  if (error) {
+    console.error(error)
+    return
+  }
+
+  const mapped = (data || []).map((item: any) => ({
+    id: item.id,
+    name: item.name,
+    currentStock: item.current_stock,
+    minStock: item.min_stock,
+    unit: item.unit
+  }))
+
+  setStockItems(mapped)
+}  
   // 🔥 เพิ่ม order → ลง DB
   const addOrder = useCallback(async (orderData: Omit<Order, 'id' | 'createdAt' | 'status'>) => {
     const { error } = await supabase
@@ -215,6 +236,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       orders,
       menuItems: menuItemsData,
       stockItems: stockItemsData,
+      fetchStock,
       notifications,
       addOrder,
       updateOrderStatus,
