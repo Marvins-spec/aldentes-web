@@ -3,14 +3,17 @@ import { Playfair_Display, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { StoreProvider } from "@/lib/store"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <StoreProvider>
+        <StoreProvider> {/* ✅ ต้องมีตัวนี้ */}
           {children}
         </StoreProvider>
+
+        <Analytics />
       </body>
     </html>
   )
